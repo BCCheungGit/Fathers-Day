@@ -5,16 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Father's Day</title>
     <link rel="stylesheet" href="style.css">
+    
   </head>
   <body>
-    <div id="app">
-      <div id="chat_container"></div>
-      <form>
-        <textarea name="prompt" rows="1" cols="1" placeholder="ask"></textarea>
-      </form>
-      <button type="submit"><img src="assets/send.svg" alt="send button" /></button>
-    </div>
+    
 
-    <script type="module" src="/script.js"></script>
+    <div id="app">
+      <h1>Click the arrow at the bottom to get started!</h1>
+        <div id="chat_container">
+          <button class="surprise-button" id="surprise-button" onclick="fathersday()">Click Here When the AI is Done!!</button>
+      </div>
+      <form>
+        <textarea name="prompt" rows="1" cols="1" placeholder="ask">Send me a specific happy father's day message.</textarea>
+        <button class="submit-button" type="submit"><img src="assets/send.svg" alt="send button" /></button>
+      </form>
+
+      
+    </div>
+    
+
+    <script>
+
+const form = document.querySelector('form');
+const chatContainer = document.querySelector('#chat_container');
+
+
+function chatStripe (isAi, value, uniqueId) {
+  return (
+    `
+     <div class="wrapper ${isAi && 'ai'}">
+      <div class="chat">
+        <div class="profile">
+          <img 
+            src = "assets/user.svg"
+            alt = ""
+
+            />
+        </div>
+        <div class="message" id=${uniqueId}>${value}</div>
+      </div>
+     </div>
+    
+    `
+
+  )
+}
+          
+      
+      function fathersday() {
+        chatContainer.innerHTML += chatStripe(false, "Thanks for being my dad for the last 18 and a half years. I worked hard on this virtual fathers day card, I hope you like it dad. Love you! -Ben 感谢您多年来一直是我的父亲 我为这份礼物工作了将近一个星期 希望您喜欢这份礼物 我爱你。btw, this is a working clone of chatgpt, you can use it like the normal one!");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+
+
+    </script>
+    <script type="module" src="/script.js">
+
+
+
+    </script>
   </body>
 </html>

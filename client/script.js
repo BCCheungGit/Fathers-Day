@@ -4,7 +4,14 @@ import user from './assets/user.svg'
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
 
+let surprisebtn = document.getElementById("surprise-button")
+
+
+
 let loadInterval;
+
+
+
 
 function loader(element) {
   element.textContent = '';
@@ -63,7 +70,7 @@ function chatStripe (isAi, value, uniqueId) {
 
 const handleSubmit = async (e) => {
   e.preventDefault()
-
+  document.querySelector('h1').remove();
   const data = new FormData(form);
 
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
@@ -72,6 +79,8 @@ const handleSubmit = async (e) => {
 
   const uniqueId = generateUniqueId();
   chatContainer.innerHTML += chatStripe(true, " ",  uniqueId);
+
+  //chatContainer.innerHTML += chatStripe(false, "Thanks for being my dad for the last 18 and a half years. I worked hard on this virtual fathers day card, I hope you like it dad. Love you!")
 
   chatContainer.scrollTop = chatContainer.scrollHeight;
 
@@ -96,9 +105,6 @@ const handleSubmit = async (e) => {
   if(response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-
-
-
     typeText(messageDiv, parsedData);
 
   } else {
@@ -108,7 +114,10 @@ const handleSubmit = async (e) => {
 
     alert(err);
   }
+
+  document.getElementById("surprise-button").style.visibility="visible";
 }
+
 
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', (e) => {
@@ -117,3 +126,4 @@ form.addEventListener('keyup', (e) => {
   }
   
 })
+
