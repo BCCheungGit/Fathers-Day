@@ -70,6 +70,8 @@ function chatStripe (isAi, value, uniqueId) {
 
 const handleSubmit = async (e) => {
   e.preventDefault()
+
+  
   if (document.querySelector('h1') != null){
     document.querySelector('h1').remove();
   }
