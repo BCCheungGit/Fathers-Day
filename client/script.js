@@ -70,7 +70,9 @@ function chatStripe (isAi, value, uniqueId) {
 
 const handleSubmit = async (e) => {
   e.preventDefault()
-  document.querySelector('h1').remove();
+  if (document.querySelector('h1') != null){
+    document.querySelector('h1').remove();
+  }
   const data = new FormData(form);
 
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
