@@ -4,7 +4,6 @@ import user from './assets/user.svg'
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
 
-let surprisebtn = document.getElementById("surprise-button")
 
 
 
@@ -70,11 +69,11 @@ function chatStripe (isAi, value, uniqueId) {
 
 const handleSubmit = async (e) => {
   e.preventDefault()
-
   
   if (document.querySelector('h1') != null){
     document.querySelector('h1').remove();
   }
+
   const data = new FormData(form);
 
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
